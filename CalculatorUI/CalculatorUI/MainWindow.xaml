@@ -18,6 +18,7 @@
             <RowDefinition x:Name="Row2"/>
             <RowDefinition x:Name="Row3"/>
         </Grid.RowDefinitions>
+        <Viewbox x:Name="BackgroundScaleView" Grid.ColumnSpan="4" Grid.RowSpan="4" Margin="0"/>
 
     </Grid>
 </Window>
