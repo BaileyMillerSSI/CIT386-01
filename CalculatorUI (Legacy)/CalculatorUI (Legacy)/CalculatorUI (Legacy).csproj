@@ -75,5 +75,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CalculatorApi\CalculatorApi\CalculatorApi.csproj">
+      <Project>{38b33343-868a-4816-bdce-9342be47b44b}</Project>
+      <Name>CalculatorApi</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
