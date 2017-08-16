@@ -6,6 +6,18 @@
         mc:Ignorable="d"
         Title="Calculator" Height="350" Width="300">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="AnswerRow" Height="0.75*"/>
+            <RowDefinition x:Name="Row1"/>
+            <RowDefinition x:Name="Row2"/>
+            <RowDefinition x:Name="Row3"/>
+        </Grid.RowDefinitions>
+
     </Grid>
 </Window>
