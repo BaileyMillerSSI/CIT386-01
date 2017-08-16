@@ -18,7 +18,9 @@
             <RowDefinition x:Name="Row2"/>
             <RowDefinition x:Name="Row3"/>
         </Grid.RowDefinitions>
-        <Viewbox x:Name="BackgroundScaleView" Grid.ColumnSpan="4" Grid.RowSpan="4" Margin="0"/>
+        <Viewbox x:Name="_7ScaleBox" Margin="0" Grid.Row="1">
+            <Button x:Name="_7Btn" Content="Button" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        </Viewbox>
 
     </Grid>
 </Window>
