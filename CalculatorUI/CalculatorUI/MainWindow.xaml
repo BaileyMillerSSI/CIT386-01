@@ -1,4 +1,4 @@
-﻿<Window x:Class="CalculatorUI.MainWindow"
+﻿<Window x:Name="CoreWindow" x:Class="CalculatorUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -18,9 +18,37 @@
             <RowDefinition x:Name="Row2"/>
             <RowDefinition x:Name="Row3"/>
         </Grid.RowDefinitions>
-        <Viewbox x:Name="_7ScaleBox" Margin="0" Grid.Row="1">
-            <Button x:Name="_7Btn" Content="Button" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Viewbox x:Name="_7ScaleBox" Margin="0" Grid.Row="1" Stretch="Fill">
+            <Button x:Name="_7Btn" Content="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+        </Viewbox>
+        <Viewbox x:Name="_8ScaleBox" Margin="0" Grid.Row="1" Stretch="Fill" Grid.Column="1">
+            <Button x:Name="_8Btn" Content="8" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+        </Viewbox>
+        <Viewbox x:Name="_9ScaleBox" Margin="0" Grid.Row="1" Stretch="Fill" Grid.Column="2">
+            <Button x:Name="_9Btn" Content="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
         </Viewbox>
 
+        <Viewbox x:Name="_4ScaleBox" Margin="0" Grid.Row="2" Stretch="Fill" Grid.Column="0">
+            <Button x:Name="_4Btn" Content="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+        </Viewbox>
+        <Viewbox x:Name="_5ScaleBox" Margin="0" Grid.Row="2" Stretch="Fill" Grid.Column="1">
+            <Button x:Name="_5Btn" Content="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+        </Viewbox>
+        <Viewbox x:Name="_6ScaleBox" Margin="0" Grid.Row="2" Stretch="Fill" Grid.Column="2">
+            <Button x:Name="_6Btn" Content="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+        </Viewbox>
+
+        <Viewbox x:Name="_1ScaleBox" Margin="0" Grid.Row="3" Stretch="Fill" Grid.Column="0">
+            <Button x:Name="_1Btn" Content="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+        </Viewbox>
+        <Viewbox x:Name="_2ScaleBox" Margin="0" Grid.Row="3" Stretch="Fill" Grid.Column="1">
+            <Button x:Name="_2Btn" Content="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+        </Viewbox>
+        <Viewbox x:Name="_3ScaleBox" Margin="0" Grid.Row="3" Stretch="Fill" Grid.Column="2">
+            <Button x:Name="_3Btn" Content="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+        </Viewbox>
+        <Border x:Name="InputOutputWindow" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="4" Margin="10">
+            <TextBlock x:Name="InputOutputText" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Cursor="IBeam" Text="{Binding DisplayText}" FontSize="20" DataContext="{Binding ElementName=CoreWindow}"/>
+        </Border>
     </Grid>
 </Window>
