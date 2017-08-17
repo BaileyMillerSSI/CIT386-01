@@ -60,10 +60,65 @@ namespace CalculatorUI
             DisplayText += (sender as Button).Content as string; 
         }
 
-        private void ListenForKeyPresses()
+        private void ListenForKeyPresses(object sender, KeyEventArgs e)
         {
             //To-Do listen for any number key up events
             // Any symbol up events, +, -, /, *, (=, Enter)
+
+            switch (e.Key)
+            {
+                case Key.Add:
+                    DisplayText += "+";
+                    break;
+                case Key.Subtract:
+                    DisplayText += "-";
+                    break;
+                case Key.Multiply:
+                    DisplayText += "*";
+                    break;
+                case Key.Divide:
+                    DisplayText += "/";
+                    break;
+                case Key.OemPlus | Key.Enter:
+                    //This is the equal key
+                    break;
+
+                //Now for the numbers
+                case Key.NumPad1:
+                    break;
+                case Key.NumPad2:
+                    break;
+                case Key.NumPad3:
+                    break;
+                case Key.NumPad4:
+                    break;
+                case Key.NumPad5:
+                    break;
+                case Key.NumPad6:
+                    break;
+                case Key.NumPad7:
+                    break;
+                case Key.NumPad8:
+                    break;
+                case Key.NumPad9:
+                    break;
+                case Key.NumPad0:
+                    break;
+
+                //Functional helpers
+                //Clear simple backspace
+                case Key.Escape:
+                    //This should clear the text
+                    DisplayText = String.Empty;
+                    break;
+                case Key.Delete | Key.Back:
+                    //Remove the last entered character
+                    break;
+
+                default:
+                    break;
+            }
+
         }
 
         private void NotifyTextChange()
@@ -80,6 +135,5 @@ namespace CalculatorUI
         {
             DisplayText = String.Empty;
         }
-
     }
 }
