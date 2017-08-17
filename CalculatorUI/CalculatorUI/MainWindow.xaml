@@ -4,7 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Calculator" Height="350" Width="300">
+        Title="Calculator" Height="350" Width="300" KeyUp="ListenForKeyPresses">
+    <Window.Resources>
+        <Style x:Key="NoHoverStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -19,36 +33,56 @@
             <RowDefinition x:Name="Row3"/>
         </Grid.RowDefinitions>
         <Viewbox x:Name="_7ScaleBox" Margin="0" Grid.Row="1" Stretch="Fill">
-            <Button x:Name="_7Btn" Content="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+            <Button x:Name="_7Btn" Content="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" Style="{DynamicResource NoHoverStyle}"/>
         </Viewbox>
         <Viewbox x:Name="_8ScaleBox" Margin="0" Grid.Row="1" Stretch="Fill" Grid.Column="1">
-            <Button x:Name="_8Btn" Content="8" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+            <Button x:Name="_8Btn" Content="8" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" Style="{DynamicResource NoHoverStyle}"/>
         </Viewbox>
         <Viewbox x:Name="_9ScaleBox" Margin="0" Grid.Row="1" Stretch="Fill" Grid.Column="2">
-            <Button x:Name="_9Btn" Content="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+            <Button x:Name="_9Btn" Content="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" Style="{DynamicResource NoHoverStyle}"/>
         </Viewbox>
 
         <Viewbox x:Name="_4ScaleBox" Margin="0" Grid.Row="2" Stretch="Fill" Grid.Column="0">
-            <Button x:Name="_4Btn" Content="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+            <Button x:Name="_4Btn" Content="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" Style="{DynamicResource NoHoverStyle}"/>
         </Viewbox>
         <Viewbox x:Name="_5ScaleBox" Margin="0" Grid.Row="2" Stretch="Fill" Grid.Column="1">
-            <Button x:Name="_5Btn" Content="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+            <Button x:Name="_5Btn" Content="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" Style="{DynamicResource NoHoverStyle}"/>
         </Viewbox>
         <Viewbox x:Name="_6ScaleBox" Margin="0" Grid.Row="2" Stretch="Fill" Grid.Column="2">
-            <Button x:Name="_6Btn" Content="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+            <Button x:Name="_6Btn" Content="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" Style="{DynamicResource NoHoverStyle}"/>
         </Viewbox>
 
         <Viewbox x:Name="_1ScaleBox" Margin="0" Grid.Row="3" Stretch="Fill" Grid.Column="0">
-            <Button x:Name="_1Btn" Content="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+            <Button x:Name="_1Btn" Content="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" Style="{DynamicResource NoHoverStyle}"/>
         </Viewbox>
         <Viewbox x:Name="_2ScaleBox" Margin="0" Grid.Row="3" Stretch="Fill" Grid.Column="1">
-            <Button x:Name="_2Btn" Content="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+            <Button x:Name="_2Btn" Content="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" Style="{DynamicResource NoHoverStyle}"/>
         </Viewbox>
         <Viewbox x:Name="_3ScaleBox" Margin="0" Grid.Row="3" Stretch="Fill" Grid.Column="2">
-            <Button x:Name="_3Btn" Content="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+            <Button x:Name="_3Btn" Content="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" Style="{DynamicResource NoHoverStyle}"/>
         </Viewbox>
         <Border x:Name="InputOutputWindow" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="4" Margin="10">
             <TextBlock x:Name="InputOutputText" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Cursor="IBeam" Text="{Binding DisplayText}" FontSize="20" DataContext="{Binding ElementName=CoreWindow}"/>
         </Border>
+        <Grid x:Name="FunctionButtonGrid" Grid.RowSpan="3" Grid.Column="3" Margin="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Viewbox x:Name="AddButtonBox" Stretch="Fill">
+                <Button x:Name="AddBtn" Content="+" BorderBrush="{x:Null}" Style="{DynamicResource NoHoverStyle}"/>
+            </Viewbox>
+            <Viewbox x:Name="SubtractButtonBox" Stretch="Fill" Grid.Row="1">
+                <Button x:Name="SubtractBtn" Content="-" BorderBrush="{x:Null}" Style="{DynamicResource NoHoverStyle}"/>
+            </Viewbox>
+            <Viewbox x:Name="MultiButtonBox" Stretch="Fill" Grid.Row="2">
+                <Button x:Name="MultipleBtn" Content="*" BorderBrush="{x:Null}" Style="{DynamicResource NoHoverStyle}"/>
+            </Viewbox>
+            <Viewbox x:Name="DivideButtonBox" Stretch="Fill" Grid.Row="3">
+                <Button x:Name="DivideBtn" Content="/" BorderBrush="{x:Null}" Style="{DynamicResource NoHoverStyle}"/>
+            </Viewbox>
+        </Grid>
     </Grid>
 </Window>
