@@ -60,6 +60,12 @@ namespace CalculatorUI
             DisplayText += (sender as Button).Content as string; 
         }
 
+        private void ListenForKeyPresses()
+        {
+            //To-Do listen for any number key up events
+            // Any symbol up events, +, -, /, *, (=, Enter)
+        }
+
         private void NotifyTextChange()
         {
             OnPropertyChanged("DisplayText");
