@@ -28,10 +28,10 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition x:Name="AnswerRow" Height="0.75*"/>
-            <RowDefinition/>
             <RowDefinition x:Name="Row1"/>
             <RowDefinition x:Name="Row2"/>
             <RowDefinition x:Name="Row3"/>
+            <RowDefinition x:Name="Row4"/>
         </Grid.RowDefinitions>
         <Viewbox x:Name="_7ScaleBox" Margin="0" Grid.Row="2" Stretch="Fill">
             <Button x:Name="_7Btn" Content="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" Style="{DynamicResource NoHoverStyle}" Focusable="False"/>
@@ -91,8 +91,11 @@
             <Button x:Name="clearBtn" Content="C" BorderBrush="{x:Null}" Style="{DynamicResource NoHoverStyle}" Focusable="False"/>
         </Viewbox>
 
+
+
         <Border x:Name="InputOutputWindow" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="4" Margin="10,10,10.2,2.616">
             <TextBlock x:Name="InputOutputText" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Cursor="IBeam" Text="{Binding DisplayText}" FontSize="20" DataContext="{Binding ElementName=CoreWindow}" TextTrimming="CharacterEllipsis"/>
         </Border>
+
     </Grid>
 </Window>
