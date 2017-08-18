@@ -26,5 +26,10 @@ namespace CalculatorUI__Uwp_
         {
             this.InitializeComponent();
         }
+
+        private void OnCalculatorBtnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
