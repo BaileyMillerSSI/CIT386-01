@@ -131,6 +131,12 @@
       <Version>5.2.3</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CalculatorApi %28NetStandard%29\CalculatorApi %28NetStandard%29\CalculatorApi %28NetStandard%29.csproj">
+      <Project>{00a4ed62-43f1-41ae-8ee4-f60d0c0946ff}</Project>
+      <Name>CalculatorApi %28NetStandard%29</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
