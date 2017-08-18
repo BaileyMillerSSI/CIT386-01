@@ -7,7 +7,98 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Style x:Key="NoHoverStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="AnswerRow" Height="0.75*"/>
+            <RowDefinition x:Name="Row1"/>
+            <RowDefinition x:Name="Row2"/>
+            <RowDefinition x:Name="Row3"/>
+            <RowDefinition x:Name="Row4"/>
+        </Grid.RowDefinitions>
+        <Viewbox x:Name="_7ScaleBox" Margin="0" Grid.Row="2" Stretch="Fill">
+            <Button x:Name="_7Btn" Content="7" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" />
+        </Viewbox>
+        <Viewbox x:Name="_8ScaleBox" Margin="0" Grid.Row="2" Stretch="Fill" Grid.Column="1">
+            <Button x:Name="_8Btn" Content="8" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick"/>
+        </Viewbox>
+        <Viewbox x:Name="_9ScaleBox" Margin="0" Grid.Row="2" Stretch="Fill" Grid.Column="2">
+            <Button x:Name="_9Btn" Content="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" />
+        </Viewbox>
+
+        <Viewbox x:Name="_4ScaleBox" Margin="0" Grid.Row="3" Stretch="Fill" Grid.Column="0">
+            <Button x:Name="_4Btn" Content="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" />
+        </Viewbox>
+        <Viewbox x:Name="_5ScaleBox" Margin="0" Grid.Row="3" Stretch="Fill" Grid.Column="1">
+            <Button x:Name="_5Btn" Content="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" />
+        </Viewbox>
+        <Viewbox x:Name="_6ScaleBox" Margin="0" Grid.Row="3" Stretch="Fill" Grid.Column="2">
+            <Button x:Name="_6Btn" Content="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" />
+        </Viewbox>
+
+        <Viewbox x:Name="_1ScaleBox" Margin="0" Grid.Row="4" Stretch="Fill" Grid.Column="0">
+            <Button x:Name="_1Btn" Content="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" />
+        </Viewbox>
+        <Viewbox x:Name="_2ScaleBox" Margin="0" Grid.Row="4" Stretch="Fill" Grid.Column="1">
+            <Button x:Name="_2Btn" Content="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" />
+        </Viewbox>
+        <Viewbox x:Name="_3ScaleBox" Margin="0" Grid.Row="4" Stretch="Fill" Grid.Column="2">
+            <Button x:Name="_3Btn" Content="3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="{x:Null}" Click="OnCalculatorBtnClick" />
+        </Viewbox>
+
+        <Viewbox x:Name="DivideButtonBox" Stretch="Fill" Grid.Row="1" Grid.Column="1">
+            <Button x:Name="DivideBtn" Content="/" BorderBrush="{x:Null}" />
+        </Viewbox>
+
+        <Viewbox x:Name="AddButtonBox" Stretch="Fill" Grid.Row="2" Grid.Column="3">
+            <Button x:Name="AddBtn" Content="+" BorderBrush="{x:Null}" />
+        </Viewbox>
+
+        <Viewbox x:Name="SubtractButtonBox" Stretch="Fill" Grid.Row="1" Grid.Column="3">
+            <Button x:Name="SubtractBtn" Content="-" BorderBrush="{x:Null}" />
+        </Viewbox>
+
+        <Viewbox x:Name="MultiButtonBox" Stretch="Fill" Grid.Row="1" Grid.Column="2">
+            <Button x:Name="MultipleBtn" Content="*" BorderBrush="{x:Null}" />
+        </Viewbox>
+
+        <Viewbox x:Name="SolvebuttonBox" Stretch="Fill" Grid.Row="3" Grid.Column="3">
+            <Button x:Name="SolveBtn" Content="=" BorderBrush="{x:Null}" />
+        </Viewbox>
+
+        <Viewbox x:Name="UndoButtonBox" Stretch="Fill" Grid.Row="4" Grid.Column="3">
+            <Button x:Name="UndoBtn" Content="Undo" BorderBrush="{x:Null}" />
+        </Viewbox>
+
+        <Viewbox x:Name="ClearButtonBox" Stretch="Fill" Grid.Row="1" Grid.Column="0">
+            <Button x:Name="clearBtn" Content="C" BorderBrush="{x:Null}" />
+        </Viewbox>
+
+
+
+        <Border x:Name="InputOutputWindow" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="4" Margin="77,45,68,28">
+            <TextBlock x:Name="InputOutputText" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Text="{Binding DisplayText}" FontSize="20" DataContext="{Binding ElementName=CoreWindow}" TextTrimming="CharacterEllipsis"/>
+        </Border>
 
     </Grid>
 </Page>
