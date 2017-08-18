@@ -99,5 +99,10 @@
       <Name>CalculatorApi %28NetStandard%29</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="..\..\Calculator Shared Assets\Icons\Calculator-icon.png">
+      <Link>Assets\Shared\Calculator-icon.png</Link>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
