@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorApi", "CalculatorApi\CalculatorApi.csproj", "{38B33343-868A-4816-BDCE-9342BE47B44B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorApi (NetStandard)", "..\CalculatorApi (NetStandard)\CalculatorApi (NetStandard)\CalculatorApi (NetStandard).csproj", "{DAD451A4-7D72-49D9-A310-935E8ED79CE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{38B33343-868A-4816-BDCE-9342BE47B44B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38B33343-868A-4816-BDCE-9342BE47B44B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38B33343-868A-4816-BDCE-9342BE47B44B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAD451A4-7D72-49D9-A310-935E8ED79CE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD451A4-7D72-49D9-A310-935E8ED79CE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD451A4-7D72-49D9-A310-935E8ED79CE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD451A4-7D72-49D9-A310-935E8ED79CE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

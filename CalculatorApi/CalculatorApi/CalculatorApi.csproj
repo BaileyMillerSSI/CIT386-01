@@ -43,5 +43,11 @@
     <Compile Include="Calculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CalculatorApi %28NetStandard%29\CalculatorApi %28NetStandard%29\CalculatorApi %28NetStandard%29.csproj">
+      <Project>{dad451a4-7d72-49d9-a310-935e8ed79ce1}</Project>
+      <Name>CalculatorApi %28NetStandard%29</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
