@@ -98,10 +98,6 @@
       <Project>{8a67f36a-f28d-4ff0-be53-6b5a6d410555}</Project>
       <Name>CalculatorApi %28NetStandard%29</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CalculatorApi\CalculatorApi\CalculatorApi.csproj">
-      <Project>{38b33343-868a-4816-bdce-9342be47b44b}</Project>
-      <Name>CalculatorApi</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
