@@ -97,7 +97,7 @@
 
 
         <Border x:Name="InputOutputWindow" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="4" Margin="75,25">
-            <TextBlock x:Name="InputOutputText" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,25,10" Text="{x:Bind DisplayText, Mode=OneWay}" DataContext="{Binding ElementName=CoreWindow}" FontSize="100" TextTrimming="CharacterEllipsis"/>
+            <TextBlock x:Name="InputOutputText" VerticalAlignment="Center" Margin="0,10,25,10" Text="{x:Bind DisplayText, Mode=OneWay}" DataContext="{Binding ElementName=CoreWindow}" FontSize="72" TextTrimming="CharacterEllipsis" TextReadingOrder="DetectFromContent" TextAlignment="Right"/>
         </Border>
 
     </Grid>
