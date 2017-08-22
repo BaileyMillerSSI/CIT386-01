@@ -70,6 +70,7 @@ namespace CalculatorApi
         public void Clear()
         {
             _DisplayText = new StringBuilder("|");
+            OnPropertyChanged("DisplayText");
         }
 
         public void Backup()
