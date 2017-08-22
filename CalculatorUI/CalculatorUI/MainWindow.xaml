@@ -94,7 +94,7 @@
 
 
         <Border x:Name="InputOutputWindow" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="4" Margin="10,10,10.2,2.616">
-            <TextBlock x:Name="InputOutputText" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Cursor="IBeam" Text="{Binding DisplayText}" FontSize="20" DataContext="{Binding ElementName=CoreWindow}" TextTrimming="CharacterEllipsis"/>
+            <TextBlock x:Name="InputOutputText" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,10,0" Cursor="IBeam" Text="{Binding DisplayText}" FontSize="20" TextTrimming="CharacterEllipsis"/>
         </Border>
 
     </Grid>
