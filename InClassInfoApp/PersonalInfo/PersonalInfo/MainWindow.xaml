@@ -4,8 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Personal Information" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Margin="0,0,0,160.8" Grid.RowSpan="2">
+            <Label x:Name="FirstNameLabel" Content="First Name" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="FirstNameTxt" Height="23" Margin="0,40,-0.2,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" HorizontalAlignment="Center" Width="193" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Column="1" Margin="0,0,0,160.8" Grid.RowSpan="2">
+            <Label x:Name="LastNameLabel" Content="Last Name" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="LastNameTxt" Height="23" Margin="0,40,-0.2,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" HorizontalAlignment="Center" Width="193" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        </Grid>
+        <Button x:Name="SubmitBtn" Content="Submit" Margin="10,0.4,10,115.8" Grid.Row="1" Click="SubmitBtn_Click"/>
+        <Button x:Name="CloseBtn" Content="Clear" Margin="10,0.4,10,115.8" Grid.Row="1" Grid.Column="1" Click="CloseBtn_Click"/>
+
+
     </Grid>
 </Window>
