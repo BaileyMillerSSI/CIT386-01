@@ -10,6 +10,10 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
+            Console.Title = "I am ALIVE!";
+            Console.WriteLine("Hello World");
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadLine();
 
         }
     }
