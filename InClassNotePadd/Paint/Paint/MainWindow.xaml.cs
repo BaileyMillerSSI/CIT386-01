@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -21,6 +23,8 @@ namespace Paint
     /// </summary>
     public partial class MainWindow : Window
     {
+        CancellationTokenSource cts = new CancellationTokenSource();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,15 +42,36 @@ namespace Paint
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            using (var fs = new FileStream(@"C:\Users\Bailey Miller\Downloads\picture.bmp", FileMode.Create, FileAccess.ReadWrite))
-            {
-                RenderTargetBitmap rtb = new RenderTargetBitmap((int)DrawingCanvas.ActualWidth, (int)DrawingCanvas.ActualHeight, 96d, 96d, PixelFormats.Default);
-                rtb.Render(DrawingCanvas);
-                BitmapEncoder pngEncoder = new PngBitmapEncoder();
-                pngEncoder.Frames.Add(BitmapFrame.Create(rtb));
-                pngEncoder.Save(fs);
-            }
-                
+            SaveAsPngAsync();    
+        }
+
+
+        private async Task SaveAsPngAsync()
+        {
+            var canvasAtSaveState = XamlWriter.Save(DrawingCanvas);
+            var w = DrawingCanvas.ActualWidth;
+            var h = DrawingCanvas.ActualHeight;
+            var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+            await Task.Factory.StartNew(() => {
+                try
+                {
+                    InkCanvas cc = XamlReader.Parse(canvasAtSaveState) as InkCanvas;
+                    var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+
+                    using (var fs = new FileStream(System.IO.Path.Combine(desktopPath, "picture.png"), FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        RenderTargetBitmap rtb = new RenderTargetBitmap((int)w, (int)h, 96d, 96d, PixelFormats.Default);
+                        rtb.Render(cc);
+                        BitmapEncoder pngEncoder = new PngBitmapEncoder();
+                        pngEncoder.Frames.Add(BitmapFrame.Create(rtb));
+                        pngEncoder.Save(fs);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }, cts.Token, TaskCreationOptions.PreferFairness, scheduler);
         }
     }
 }
