@@ -1,20 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Paint
 {
@@ -23,7 +11,6 @@ namespace Paint
     /// </summary>
     public partial class MainWindow : Window
     {
-        CancellationTokenSource cts = new CancellationTokenSource();
 
         public MainWindow()
         {
@@ -42,36 +29,30 @@ namespace Paint
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            var saveTask = SaveAsPngAsync();    
+            //They're never going to even see this it happens way to fast.
+            SaveBtn.Content = "Saving";
+            SaveAsPng();
+            SaveBtn.Content = "Save";
         }
 
 
-        private async Task SaveAsPngAsync()
+        private void SaveAsPng()
         {
-            var canvasAtSaveState = XamlWriter.Save(DrawingCanvas);
+            var canvasAtSaveState = DrawingCanvas;
+            canvasAtSaveState.Background = Background; //Windows background or remove to leave transparent or default
             var w = DrawingCanvas.ActualWidth;
             var h = DrawingCanvas.ActualHeight;
-            var scheduler = TaskScheduler.FromCurrentSynchronizationContext();
-            await Task.Factory.StartNew(() => {
-                try
-                {
-                    InkCanvas cc = XamlReader.Parse(canvasAtSaveState) as InkCanvas;
-                    var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)canvasAtSaveState.ActualWidth, (int)canvasAtSaveState.ActualHeight, 96d, 96d, PixelFormats.Default);
+            rtb.Render(canvasAtSaveState);
+            BitmapEncoder pngEncoder = new PngBitmapEncoder();
+            pngEncoder.Frames.Add(BitmapFrame.Create(rtb));
+            
+            var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 
-                    using (var fs = new FileStream(System.IO.Path.Combine(desktopPath, "picture.png"), FileMode.Create, FileAccess.ReadWrite))
-                    {
-                        RenderTargetBitmap rtb = new RenderTargetBitmap((int)w, (int)h, 96d, 96d, PixelFormats.Default);
-                        rtb.Render(cc);
-                        BitmapEncoder pngEncoder = new PngBitmapEncoder();
-                        pngEncoder.Frames.Add(BitmapFrame.Create(rtb));
-                        pngEncoder.Save(fs);
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }, cts.Token, TaskCreationOptions.PreferFairness, scheduler);
+            using (var fs = new FileStream(Path.Combine(desktopPath, $"{DateTime.Now.Month}-{DateTime.Now.Day}-{DateTime.Now.Year} {DateTime.Now.Hour}-{DateTime.Now.Minute}-{DateTime.Now.Second}-{DateTime.Now.Millisecond}.png"), FileMode.Create, FileAccess.ReadWrite))
+            {
+                pngEncoder.Save(fs);
+            }
         }
     }
 }
