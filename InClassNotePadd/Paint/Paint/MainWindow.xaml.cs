@@ -42,7 +42,7 @@ namespace Paint
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            SaveAsPngAsync();    
+            var saveTask = SaveAsPngAsync();    
         }
 
 
