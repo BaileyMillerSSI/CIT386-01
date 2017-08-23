@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -40,11 +43,9 @@ namespace Paint
         {
             var canvasAtSaveState = DrawingCanvas;
             canvasAtSaveState.Background = Background; //Windows background or remove to leave transparent or default
-            var w = DrawingCanvas.ActualWidth;
-            var h = DrawingCanvas.ActualHeight;
             RenderTargetBitmap rtb = new RenderTargetBitmap((int)canvasAtSaveState.ActualWidth, (int)canvasAtSaveState.ActualHeight, 96d, 96d, PixelFormats.Default);
             rtb.Render(canvasAtSaveState);
-            BitmapEncoder pngEncoder = new PngBitmapEncoder();
+            var pngEncoder = new PngBitmapEncoder();
             pngEncoder.Frames.Add(BitmapFrame.Create(rtb));
             
             var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
