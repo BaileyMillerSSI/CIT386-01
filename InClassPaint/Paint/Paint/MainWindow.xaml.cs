@@ -42,7 +42,7 @@ namespace Paint
         private void SaveAsPng()
         {
             var canvasAtSaveState = DrawingCanvas;
-            canvasAtSaveState.Background = Background; //Windows background or remove to leave transparent or default
+            canvasAtSaveState.Background = Background; //Window background or remove to leave transparent or default
             RenderTargetBitmap rtb = new RenderTargetBitmap((int)canvasAtSaveState.ActualWidth, (int)canvasAtSaveState.ActualHeight, 96d, 96d, PixelFormats.Default);
             rtb.Render(canvasAtSaveState);
             var pngEncoder = new PngBitmapEncoder();
