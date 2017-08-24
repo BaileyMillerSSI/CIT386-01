@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +24,13 @@ namespace ReadWriteXaml
         public MainWindow()
         {
             InitializeComponent();
+
+            ReadFriendXml();
+        }
+
+        private void ReadFriendXml()
+        {
+            var path = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "XamlFile.xml");
         }
     }
 }

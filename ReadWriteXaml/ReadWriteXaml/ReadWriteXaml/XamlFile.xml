@@ -1,1 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Friends>
+
+  <Friend>
+    <FirstName>Kiefer</FirstName>
+    <LastName>Ohl</LastName>
+    <Age>20</Age>
+  </Friend>
+
+  <Friend>
+    <FirstName>Damian</FirstName>
+    <LastName>Donges</LastName>
+    <Age>21</Age>
+  </Friend>
+
+  <Friend>
+    <FirstName>Jon</FirstName>
+    <LastName>Hendrickson</LastName>
+    <Age>20</Age>
+  </Friend>
+  
+</Friends>
