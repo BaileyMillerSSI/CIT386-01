@@ -20,6 +20,9 @@ namespace DynamicUI
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        TextBox txtMessage;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -37,16 +40,21 @@ namespace DynamicUI
             AddToStack(lblMessage);
 
             //Create textBox and add to StackPanel
-            var txtMessage = new TextBox();
+            txtMessage = new TextBox();
 
             AddToStack(txtMessage);
 
             //Create button and to StackPanel
             var btnGo = new Button() { Content = "Go", Background = Brushes.Red, Margin = new Thickness(0, 25, 0, 0) };
+            btnGo.Click += ShowMessage;
 
             AddToStack(btnGo);
         }
 
+        private void ShowMessage(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(txtMessage.Text);
+        }
 
         private void AddToStack(Control con)
         {
