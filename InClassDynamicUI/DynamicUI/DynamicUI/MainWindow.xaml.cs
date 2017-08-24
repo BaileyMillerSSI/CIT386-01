@@ -42,10 +42,9 @@ namespace DynamicUI
             AddToStack(txtMessage);
 
             //Create button and to StackPanel
-            var btnGo = new Button() { Content = "Go" };
+            var btnGo = new Button() { Content = "Go", Background = Brushes.Red, Margin = new Thickness(0, 25, 0, 0) };
 
             AddToStack(btnGo);
-
         }
 
 
