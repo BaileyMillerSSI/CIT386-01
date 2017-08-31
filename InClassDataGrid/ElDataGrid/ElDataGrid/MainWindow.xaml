@@ -6,6 +6,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
+
+        <Grid.Resources>
+            <XmlDataProvider x:Key="MovieData" Source="Movies.xml"></XmlDataProvider>
+        </Grid.Resources>
         
+        <DataGrid x:Name="MovieDataGrid" Margin="10" DataContext="{StaticResource MovieData}" ItemsSource="{Binding XPath=/Movies/Movie}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding XPath=@id}"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding XPath=Title}"/>
+                <DataGridTextColumn Header="Director" Binding="{Binding XPath=Director}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </Window>
