@@ -36,7 +36,44 @@ namespace CalculatorUI
 
         public async void OnCalculatorBtnClick(object sender, RoutedEventArgs e)
         {
+            var senderText = (sender as Button).Content.ToString();
             //Do the same thing as a key press for that button
+            if (senderText == "+" || senderText == "-" || senderText == "/" || senderText == "*")
+            {
+                if (vm.CanAppendOperator())
+                {
+                    vm.DisplayText = senderText;
+                }
+            }
+            else {
+                vm.DisplayText = senderText;
+            }
+        }
+
+        public void ClearButtonClicked(object sender, RoutedEventArgs e)
+        {
+            vm.Clear();
+        }
+
+        public void BackupButtonClicked(object sender, RoutedEventArgs e)
+        {
+            vm.Backup();
+        }
+
+        public  async void FunctionButtonClicked(object sender, RoutedEventArgs e)
+        {
+            var functionOperator = (sender as Button).Content.ToString();
+            if (functionOperator == "=")
+            {
+                var answer = await SolveProblemAsync();
+                vm.SetAnswer(answer);
+            }
+            else {
+                if (vm.CanAppendOperator())
+                {
+                    vm.DisplayText = functionOperator;
+                }
+            }
             
         }
 
@@ -48,16 +85,28 @@ namespace CalculatorUI
             switch (e.Key)
             {
                 case Key.Add:
-                    vm.DisplayText = "+";
+                    if (vm.CanAppendOperator())
+                    {
+                        vm.DisplayText = "+";
+                    }
                     break;
                 case Key.Subtract:
-                    vm.DisplayText = "-";
+                    if (vm.CanAppendOperator())
+                    {
+                        vm.DisplayText = "-";
+                    }
                     break;
                 case Key.Multiply:
-                    vm.DisplayText = "*";
+                    if (vm.CanAppendOperator())
+                    {
+                        vm.DisplayText = "*";
+                    }
                     break;
                 case Key.Divide:
-                    vm.DisplayText = "/";
+                    if (vm.CanAppendOperator())
+                    {
+                        vm.DisplayText = "/";
+                    }
                     break;
                 case Key.OemPlus:
                     var _answer1 = await SolveProblemAsync();
@@ -99,7 +148,12 @@ namespace CalculatorUI
                 case Key.NumPad0:
                     vm.DisplayText = "0";
                     break;
-
+                case Key.Decimal:
+                    if (vm.CanAppendDecimal())
+                    {
+                        vm.DisplayText = ".";
+                    }
+                    break;
                 //Functional helpers
                 //Clear simple backspace
                 case Key.Escape:
@@ -121,20 +175,34 @@ namespace CalculatorUI
         }
 
 
-        public async Task<double> SolveProblemAsync()
+        public async Task<float> SolveProblemAsync()
         {
             return await await Task.Factory.StartNew(async () =>
             {
-                var clean = await vm.ClearProblemOfSpaces();
-                var solver = new DataTable();
-                var didSolve = Double.TryParse(solver.Compute(clean, "").ToString(), out double sol);
-                if (didSolve)
+                try
                 {
-                    return sol;
+                    var clean = await vm.ClearProblemOfSpaces();
+                    if (!clean.EndsWith("/0"))
+                    {
+                        var solver = new DataTable();
+                        var didSolve = float.TryParse(solver.Compute(clean, "").ToString(), out float sol);
+                        if (didSolve)
+                        {
+                            return sol;
+                        }
+                        else
+                        {
+                            return 0f;
+                        }
+                    }
+                    else
+                    {
+                        return 0f;
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    return 0.0;
+                    return 0f;
                 }
             });
         }

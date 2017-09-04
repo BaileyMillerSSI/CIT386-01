@@ -76,13 +76,34 @@ namespace CalculatorApi
         public void Backup()
         {
             var CurrentCount = _DisplayText.Length;
-            _DisplayText = new StringBuilder(_DisplayText.ToString().Substring(0, CurrentCount - 1));
-            OnPropertyChanged("DisplayText");
+            if (CurrentCount != 0)
+            {
+                _DisplayText = new StringBuilder(_DisplayText.ToString().Substring(0, CurrentCount - 1));
+                OnPropertyChanged("DisplayText");
+            }
+            
         }
 
         public bool TextIsWaitCursor()
         {
             return _DisplayText.ToString().Trim() == "|";
+        }
+
+        public bool CanAppendOperator()
+        {
+            if (DisplayText.Trim().EndsWith("|") || DisplayText.Trim().EndsWith("+") || DisplayText.Trim().EndsWith("-") || DisplayText.Trim().EndsWith("*") || DisplayText.Trim().EndsWith("/"))
+            {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        public bool CanAppendDecimal()
+        {
+            var EndsWithNumber = Char.IsNumber(DisplayText.Trim().Last());
+            return EndsWithNumber;
         }
 
         public void SetAnswer(object input)
