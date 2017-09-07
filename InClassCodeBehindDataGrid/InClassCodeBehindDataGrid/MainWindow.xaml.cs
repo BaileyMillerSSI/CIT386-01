@@ -44,5 +44,10 @@ namespace InClassCodeBehindDataGrid
 
             BookDataGrid.ItemsSource = dv;
         }
+
+        private void DeleteBtnClicked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
