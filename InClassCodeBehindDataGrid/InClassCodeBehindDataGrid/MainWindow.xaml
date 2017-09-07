@@ -6,7 +6,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <DataGrid x:Name="BookDataGrid" Margin="0"/>
-
+        <DataGrid x:Name="BookDataGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"></DataGridTextColumn>
+                <DataGridTextColumn Header="Title"></DataGridTextColumn>
+                <DataGridTextColumn Header="Author"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
