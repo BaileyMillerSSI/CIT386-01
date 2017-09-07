@@ -11,6 +11,7 @@
                 <DataGridTextColumn Header="Id" Binding="{Binding Path=id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Author" Binding="{Binding Path=Author}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Delete"></DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
