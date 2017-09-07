@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,28 @@ namespace InClassCodeBehindDataGrid
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        String xmlPath = @"BooksXml.xml";
+
+
         public MainWindow()
         {
             InitializeComponent();
+
+            BindDataToGrid();
+
+        }
+
+
+        private void BindDataToGrid()
+        {
+            var ds = new DataSet("Books");
+
+            ds.ReadXml(xmlPath);
+
+            var dv = new DataView(ds.Tables[0]);
+
+            BookDataGrid.ItemsSource = dv;
         }
     }
 }

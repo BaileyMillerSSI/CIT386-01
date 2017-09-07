@@ -8,9 +8,9 @@
     <Grid>
         <DataGrid x:Name="BookDataGrid" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id"></DataGridTextColumn>
-                <DataGridTextColumn Header="Title"></DataGridTextColumn>
-                <DataGridTextColumn Header="Author"></DataGridTextColumn>
+                <DataGridTextColumn Header="Id" Binding="{Binding Path=id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Author" Binding="{Binding Path=Author}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
