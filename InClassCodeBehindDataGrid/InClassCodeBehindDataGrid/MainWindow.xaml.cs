@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace InClassCodeBehindDataGrid
 {
@@ -47,7 +48,22 @@ namespace InClassCodeBehindDataGrid
 
         private void DeleteBtnClicked(object sender, RoutedEventArgs e)
         {
+            var dg = BookDataGrid;
+            var dr = (DataGridRow)dg.ItemContainerGenerator
+                                        .ContainerFromIndex(dg.SelectedIndex);
+            var dgs = (DataGridCell)dg.Columns[0].GetCellContent(dr).Parent;
 
+            var bookId = Convert.ToInt32((dgs.Content as TextBlock).Text);
+
+            var doc = new XmlDocument();
+            doc.Load(xmlPath);
+
+            var nodeToRemove = doc.SelectSingleNode($"//Book[@id=\"{bookId}\"]");
+            nodeToRemove.ParentNode.RemoveChild(nodeToRemove);
+
+            doc.Save(xmlPath);
+
+            BindDataToGrid();
         }
     }
 }
