@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="etf-8" ?>
+<Books>
+    <Book id="1">
+        <Title>IT</Title>
+        <Author>Stephen King</Author>
+    </Book>
+    <Book id="2">
+        <Title>The Prince</Title>
+        <Author>Some Guy that wrote</Author>
+    </Book>
+    <Book id="3">
+        <Title>Hitchhiker's Guide to the Galaxy</Title>
+        <Author>Douglas Adams</Author>
+    </Book>
+    <Book id="4">
+        <Title>Uglies</Title>
+        <Author>Some ugly peron</Author>
+    </Book>
+</Books>
