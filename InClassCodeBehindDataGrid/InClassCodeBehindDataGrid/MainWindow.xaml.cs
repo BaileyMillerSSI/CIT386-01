@@ -41,9 +41,17 @@ namespace InClassCodeBehindDataGrid
 
             ds.ReadXml(xmlPath);
 
-            var dv = new DataView(ds.Tables[0]);
+            if (ds.Tables.Count != 0)
+            {
+                var dv = new DataView(ds.Tables[0]);
+                BookDataGrid.ItemsSource = dv;
+            }
+            else {
+                BookDataGrid.Columns.Clear();
+                BookDataGrid.ItemsSource = null;
+            }
 
-            BookDataGrid.ItemsSource = dv;
+            
         }
 
         private void DeleteBtnClicked(object sender, RoutedEventArgs e)
@@ -64,6 +72,12 @@ namespace InClassCodeBehindDataGrid
             doc.Save(xmlPath);
 
             BindDataToGrid();
+        }
+
+        private void CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            //Time to save some things
+
         }
     }
 }
