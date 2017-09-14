@@ -22,6 +22,9 @@ namespace YoutubeVideoDownloader
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public List<String> NeedsDeletedPaths = new List<string>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -39,13 +42,14 @@ namespace YoutubeVideoDownloader
                 searchData = rawData.Trim();
             }
             SearchButton.Content = "Downloading";
+            SearchButton.IsEnabled = false;
             var status = await DownloadAndSaveVideo(searchData);
             if (!status)
             {
                 MessageBox.Show("Downloading encountered error");
             }
             SearchButton.Content = "Search";
-            VideoSearch.Text = "Video Url or Id";
+            SearchButton.IsEnabled = true;
 
         }
 
@@ -73,6 +77,7 @@ namespace YoutubeVideoDownloader
                             }
                             else {
                                 File.Move(path, path + ".old");
+                                NeedsDeletedPaths.Add(path + ".old");
                                 File.WriteAllBytes(path, video.GetBytes());
                             }
 
@@ -132,6 +137,26 @@ namespace YoutubeVideoDownloader
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             RootGrid.Focus();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            AfterVideo.Stop();
+            AfterVideo.Source = null;
+
+            foreach (var oldVideo in NeedsDeletedPaths)
+            {
+                try
+                {
+                    File.Delete(oldVideo);
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+
+
         }
     }
 }
