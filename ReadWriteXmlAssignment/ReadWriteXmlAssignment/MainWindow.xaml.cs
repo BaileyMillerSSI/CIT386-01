@@ -175,11 +175,9 @@ namespace ReadWriteXmlAssignment
             SaveChanges(e.Column.SortMemberPath, (e.EditingElement as TextBox).Text);
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            RootGrid.Focus();
-        }
+        
 
+        #region Helpers for textboxs
         private void AddGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             var tagData = ((sender as TextBox).Tag as TextBoxProperties);
@@ -197,6 +195,12 @@ namespace ReadWriteXmlAssignment
                 (sender as TextBox).Text = tagData.PlaceHolder;
             }
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            RootGrid.Focus();
+        }
+        #endregion
     }
 
     //Comes in handy because I needed to pass some data along with each text box, the tag property is helpful for this
