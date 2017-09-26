@@ -105,12 +105,7 @@ namespace ReadWriteXaml
             subRoot.AppendChild(newFriend);
 
             doc.Save(DataStream);
-
-
             
-
-            
-
         }
 
         private Label CreateLabel(string cont)
