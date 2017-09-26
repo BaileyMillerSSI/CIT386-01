@@ -38,16 +38,8 @@ namespace ReadWriteXmlAssignment
 
         private void LoadXmlFileIntoDataGrid()
         {
-
-            
-
-
-            //To-Do add populate the XML data into the data grid
             var ds = new DataSet("State Data");
-
             
-
-
             ds.ReadXml(XmlPath);
 
             if (ds.Tables.Count != 0)
@@ -58,7 +50,6 @@ namespace ReadWriteXmlAssignment
             }
             else
             {
-
                 FileDataGrid.ItemsSource = null;
                 FileDataGrid.Columns.Clear();
                 FileDataGrid.UpdateLayout();
@@ -67,7 +58,7 @@ namespace ReadWriteXmlAssignment
 
         private void DeleteBtnClicked(object sender, RoutedEventArgs e)
         {
-            //Find the name of the current state being editted, primary key
+            //Find the name of the current state being edited, primary key
             var DataRow = (DataGridRow)FileDataGrid.ItemContainerGenerator.ContainerFromIndex(FileDataGrid.SelectedIndex);
 
             var dgs = (DataGridCell)(FileDataGrid.Columns[0].GetCellContent(DataRow).Parent);
@@ -86,7 +77,6 @@ namespace ReadWriteXmlAssignment
 
         private void GenerateAutoPopulatedInputFields()
         {
-            //To-Do get the fields required to auto generate
             var columnsToGenerate = FileDataGrid.Columns.Where(x=> x is DataGridTextColumn).ToList();
 
             //Build a new text box for each one
@@ -151,7 +141,7 @@ namespace ReadWriteXmlAssignment
 
         private void SaveChanges(string columnPath, string newValue)
         {
-            //Find the name of the current state being editted, primary key
+            //Find the name of the current state being edited, primary key
             var DataRow = (DataGridRow)FileDataGrid.ItemContainerGenerator.ContainerFromIndex(FileDataGrid.SelectedIndex);
 
             var dgs = (DataGridCell)(FileDataGrid.Columns[0].GetCellContent(DataRow).Parent);
